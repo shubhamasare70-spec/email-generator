@@ -13,8 +13,8 @@ db = firestore.client()
 
 # 2. Setup Gemini API
 # Replace with your actual key for this quick prototype
-genai.configure(api_key="AIzaSyBs0XKwESCuortI9P1yWd34xg0eCFEvCxw")
-
+import os
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 # NEW AUTO-DETECT CODE:
 valid_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
 model = genai.GenerativeModel(valid_models[0])# 3. Streamlit UI Build
